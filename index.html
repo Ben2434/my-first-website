@@ -1,0 +1,747 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>楓丹廷的審判｜芙寧娜的五百年秘密</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    background: #edf5f8;
+    color: #344b60;
+    min-height: 100vh;
+    transition: 0.5s;
+}
+
+/* 頁面背景 */
+
+header {
+    background: linear-gradient(135deg, #d9edf5, #b5d7e5);
+    text-align: center;
+    padding: 55px 20px 35px;
+    border-bottom: 4px solid #a6cbdc;
+}
+
+header .subtitle {
+    letter-spacing: 4px;
+    font-size: 13px;
+    color: #527c91;
+    margin-bottom: 12px;
+}
+
+header h1 {
+    font-size: 36px;
+    color: #315b76;
+    margin-bottom: 12px;
+}
+
+header p {
+    color: #52788b;
+    line-height: 1.8;
+}
+
+/* 主體 */
+
+.container {
+    max-width: 900px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.description {
+    text-align: center;
+    color: #8296a5;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* 選擇按鈕 */
+
+.choices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.choice {
+    background: white;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 22px 10px;
+    cursor: pointer;
+    transition: 0.25s;
+    color: #49677c;
+    text-align: center;
+}
+
+.choice:hover {
+    transform: translateY(-5px);
+    border-color: #9fc8d9;
+    box-shadow: 0 7px 18px #8caab533;
+}
+
+.choice.active {
+    border-color: #6da9c2;
+    background: #e1f1f7;
+}
+
+.choice .symbol {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.choice h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.choice p {
+    font-size: 12px;
+    color: #8a9daa;
+}
+
+/* 審判紀錄 */
+
+.result {
+    margin-top: 35px;
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 5px 20px #7394a51c;
+    min-height: 250px;
+    animation: appear 0.4s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.record {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #83a6b7;
+    margin-bottom: 15px;
+}
+
+.result h2 {
+    font-size: 24px;
+    color: #365e76;
+    margin-bottom: 18px;
+}
+
+.content {
+    line-height: 2;
+    font-size: 16px;
+    color: #526879;
+    white-space: pre-line;
+}
+
+/* 推薦理由 */
+
+.reason {
+    margin-top: 25px;
+    padding: 18px;
+    border-radius: 12px;
+    background: #edf6fa;
+    border-left: 4px solid #83b7cc;
+}
+
+.reason h4 {
+    font-size: 14px;
+    color: #477d98;
+    margin-bottom: 9px;
+}
+
+.reason p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #617b8c;
+}
+
+/* 換一個事件 */
+
+.next-btn {
+    display: block;
+    margin: 25px auto 0;
+    padding: 13px 35px;
+    border: none;
+    border-radius: 30px;
+    background: #75a9c1;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.next-btn:hover {
+    background: #4d8ba9;
+    transform: scale(1.04);
+}
+
+/* 進度 */
+
+.progress {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 12px;
+    color: #91a5b1;
+}
+
+footer {
+    text-align: center;
+    padding: 35px 15px;
+    color: #9babb5;
+    font-size: 12px;
+}
+
+/* 內心模式 */
+
+body.inner-mode {
+    background: #152c40;
+    color: #d5e8f0;
+}
+
+.inner-mode header {
+    background: linear-gradient(135deg, #244c65, #152e48);
+    border-color: #477e96;
+}
+
+.inner-mode header h1,
+.inner-mode header p,
+.inner-mode header .subtitle {
+    color: #d2e9f2;
+}
+
+.inner-mode .section-title {
+    color: #d5e8f0;
+}
+
+.inner-mode .description {
+    color: #a1c1d1;
+}
+
+.inner-mode .choice {
+    background: #27465b;
+    color: #e1f0f5;
+}
+
+.inner-mode .choice p {
+    color: #a6c5d3;
+}
+
+.inner-mode .choice.active {
+    background: #37647b;
+    border-color: #8dc5d9;
+}
+
+.inner-mode .result {
+    background: #203c51;
+    box-shadow: 0 5px 25px #00000033;
+}
+
+.inner-mode .result h2,
+.inner-mode .content {
+    color: #d5e9f0;
+}
+
+.inner-mode .record {
+    color: #8abbd0;
+}
+
+.inner-mode .reason {
+    background: #294c60;
+    border-color: #72b9c9;
+}
+
+.inner-mode .reason h4,
+.inner-mode .reason p {
+    color: #c5e2e9;
+}
+
+.inner-mode .progress,
+.inner-mode footer {
+    color: #9bb9c9;
+}
+
+.inner-mode .next-btn {
+    background: #548da5;
+}
+
+/* 手機版 */
+
+@media(max-width:600px) {
+    header {
+        padding: 40px 15px 30px;
+    }
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .choice {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        padding: 14px 18px;
+        gap: 15px;
+    }
+
+    .choice .symbol {
+        margin: 0;
+        font-size: 29px;
+    }
+
+    .choice h3 {
+        font-size: 15px;
+    }
+
+    .choice p {
+        margin-top: 4px;
+    }
+
+    .result {
+        padding: 22px 18px;
+    }
+
+    .result h2 {
+        font-size: 21px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="subtitle">FONTAINE · THE TRIAL</div>
+    <h1>楓丹廷的審判</h1>
+    <p>—— 芙寧娜的五百年秘密 ——</p>
+    <p style="margin-top:15px;">
+        歡迎來到歐庇克萊歌劇院。<br>
+        這場審判，將揭開水神背後不為人知的真相。
+    </p>
+</header>
+
+<main class="container">
+
+    <h2 class="section-title">選擇你的審判視角</h2>
+
+    <p class="description">
+        選擇一個視角，探索芙寧娜在審判中的不同面貌。
+    </p>
+
+    <div class="choices">
+
+        <button class="choice" onclick="choose('accuse')">
+            <div class="symbol">⚖️</div>
+            <div>
+                <h3>指控與質疑</h3>
+                <p>控方／民眾視角</p>
+            </div>
+        </button>
+
+        <button class="choice" onclick="choose('defend')">
+            <div class="symbol">🎭</div>
+            <div>
+                <h3>偽裝與辯解</h3>
+                <p>水神的表面演技</p>
+            </div>
+        </button>
+
+        <button class="choice" onclick="choose('inner')">
+            <div class="symbol">💧</div>
+            <div>
+                <h3>窺探內心</h3>
+                <p>五百年的真實獨白</p>
+            </div>
+        </button>
+
+    </div>
+
+    <section class="result" id="result">
+
+        <div class="record">COURT RECORD · 審判紀錄</div>
+
+        <h2 id="eventTitle">等待審判開始</h2>
+
+        <div class="content" id="eventContent">
+            請選擇上方其中一個審判視角。
+
+            你可以從控方的指控、芙寧娜的辯解，
+            或是她內心深處的秘密開始探索。
+        </div>
+
+        <div class="reason">
+            <h4 id="reasonTitle">審判現場</h4>
+            <p id="reasonContent">
+                真相往往隱藏在表象之下。
+                現在，請選擇你的第一個線索。
+            </p>
+        </div>
+
+        <button class="next-btn" id="nextBtn"
+                onclick="nextEvent()" style="display:none;">
+            探索下一個事件 ↻
+        </button>
+
+        <div class="progress" id="progress">
+            COURT STATUS : WAITING
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    Genshin Impact · Fontaine Story Experience<br>
+    本網站為非官方粉絲創作，僅供劇情體驗與交流。
+</footer>
+
+<script>
+
+// ==============================
+// 事件資料庫
+// ==============================
+
+const events = {
+
+    // 第一種：指控與質疑
+    accuse: [
+        {
+            title: "第一項質疑：妳真的是神明嗎？",
+            content:
+`旅行者提出了令人震驚的質疑。
+
+芙寧娜雖然一直以水神的身分出現在楓丹人民面前，
+但她似乎從未展現過真正屬於神明的力量。
+
+如果她真的是水神，為什麼無法證明自己的神力？
+
+這個問題讓整個歌劇院陷入沉默。`,
+            reasonTitle: "現場狀態｜輿論壓力",
+            reason:
+"全場譁然，民眾開始懷疑芙寧娜的身分。原本對水神的信任，正在一點一點崩解。"
+        },
+        {
+            title: "第二項質疑：原始胎海之水",
+            content:
+`僕人提出了更直接的挑戰。
+
+原始胎海之水能夠溶解楓丹人，
+但真正的水元素生命似乎不會受到同樣的影響。
+
+如果芙寧娜真的是水神，
+為什麼不願意接受原始胎海之水的測試？
+
+這項提議將她逼入了更難堪的處境。`,
+            reasonTitle: "現場狀態｜危機升高",
+            reason:
+"這不再只是口頭上的質疑，而是要求她以行動證明自己的神性。"
+        },
+        {
+            title: "第三項質疑：妳為何從不行動？",
+            content:
+`楓丹面臨著預言所帶來的危機。
+
+民眾期待水神能夠拯救他們，
+但芙寧娜似乎一直沒有提出有效的解決方法。
+
+她總是在公開場合表現得充滿自信，
+卻始終沒有真正阻止災難發生。
+
+難道她根本不知道如何拯救楓丹？`,
+            reasonTitle: "現場狀態｜信任危機",
+            reason:
+"人民期待的神明，似乎正在逐漸失去所有人的信任。"
+        },
+        {
+            title: "第四項質疑：五百年的謊言",
+            content:
+`旅行者與眾人逐漸拼湊出芙寧娜身上的矛盾。
+
+她以水神的身分統治楓丹五百年，
+但她的行為、能力與真正的神明存在著許多差異。
+
+她究竟隱瞞了什麼？
+
+這場審判開始從神明的身分，
+轉向她真正的目的。`,
+            reasonTitle: "現場狀態｜真相逼近",
+            reason:
+"所有線索逐漸指向同一個方向：芙寧娜身上，存在著一個持續五百年的秘密。"
+        }
+    ],
+
+    // 第二種：偽裝與辯解
+    defend: [
+        {
+            title: "高傲的水神登場",
+            content:
+`面對眾人的質疑，芙寧娜依舊維持著高傲的姿態。
+
+她試圖用誇張的語氣與戲劇化的表現，
+讓自己重新成為全場的焦點。
+
+即使面對接連不斷的追問，
+她仍然不願意輕易承認自己的弱點。
+
+畢竟，她不能讓任何人看穿自己的真實身分。`,
+            reasonTitle: "面具維持狀態｜演技評估",
+            reason:
+"她刻意提高音量、擺出自信的姿態，試圖用舞台上的氣勢壓過內心的不安。"
+        },
+        {
+            title: "轉移話題的藝術",
+            content:
+`當問題逐漸逼近她無法回答的核心時，
+芙寧娜開始利用自己擅長的表演技巧。
+
+她將注意力轉移到其他事情上，
+試圖讓現場重新回到自己熟悉的節奏。
+
+她必須爭取時間。
+
+只要還能繼續扮演水神，
+就還有機會完成自己背負的使命。`,
+            reasonTitle: "面具維持狀態｜危險程度",
+            reason:
+"每一次成功轉移話題，都只是暫時延後真相揭露的時間。"
+        },
+        {
+            title: "不能露出的恐懼",
+            content:
+`面對越來越尖銳的指控，
+芙寧娜開始出現難以掩飾的慌亂。
+
+她仍然努力維持著笑容，
+但說話的節奏與反應已經不如先前從容。
+
+她知道自己不能說出真相。
+
+因為一旦坦白，五百年來的努力可能就會付諸流水。`,
+            reasonTitle: "面具維持狀態｜瀕臨崩潰",
+            reason:
+"她越是努力表現得若無其事，就越能看出這份偽裝背後承受的巨大壓力。"
+        },
+        {
+            title: "最後的自我辯護",
+            content:
+`審判逐漸走向終點。
+
+芙寧娜試圖以最後的辯解維持水神的尊嚴。
+
+她不願意在眾人面前低頭，
+更不願意讓自己的五百年努力被輕易否定。
+
+然而，她已經快要沒有力氣繼續演下去了。
+
+舞台上的水神，終究也是一個會害怕的人。`,
+            reasonTitle: "面具維持狀態｜最後防線",
+            reason:
+"這場表演已經持續了太久。她所守護的，不只是水神的名號，更是整個楓丹的未來。"
+        }
+    ],
+
+    // 第三種：窺探內心
+    inner: [
+        {
+            title: "第 1 天：漫長使命的開始",
+            content:
+`從那一天起，她必須開始扮演水神。
+
+她不再能以普通人的身分生活，
+而是必須成為所有楓丹人眼中無所不能的神明。
+
+她不能向任何人求助，
+也不能向任何人透露自己的真實身分。
+
+這場表演，從此沒有休息的時間。`,
+            reasonTitle: "五百年倒數｜內心真實溫度",
+            reason:
+"最初的她或許還不明白，這項使命將會奪走自己多少東西。"
+        },
+        {
+            title: "第 50,000 天：無人理解的孤獨",
+            content:
+`日復一日，她必須出現在眾人的面前。
+
+她需要接受掌聲、讚美與期待，
+也必須承受所有人的注視。
+
+但是當舞台落幕，
+她只能獨自面對空蕩蕩的房間。
+
+沒有人知道她真正是誰。
+
+也沒有人能理解她為什麼不能停止表演。`,
+            reasonTitle: "五百年倒數｜孤獨程度",
+            reason:
+"她身邊從來不缺少觀眾，卻始終缺少一個能夠理解真正的她的人。"
+        },
+        {
+            title: "第 100,000 天：不能停止的表演",
+            content:
+`五百年的時間，讓她逐漸習慣了戴上面具。
+
+她必須在每一次公開場合展現笑容，
+即使內心早已疲憊不堪。
+
+她不能生病、不能軟弱，
+更不能讓任何人發現自己只是一個普通人。
+
+因為她知道，
+自己的失敗可能意味著整個楓丹的毀滅。`,
+            reasonTitle: "五百年倒數｜精神負擔",
+            reason:
+"最令人痛苦的不是表演本身，而是明明已經精疲力盡，卻仍然沒有停止的權利。"
+        },
+        {
+            title: "第 182,375 天：最後的堅持",
+            content:
+`五百年，終於來到了最後的時刻。
+
+她已經不知道自己究竟哭過多少次，
+也不知道還要多久才能真正結束這場表演。
+
+她曾經無數次想像，
+如果有一天不必再扮演水神，自己會過著什麼樣的生活。
+
+但是在那一天到來之前，
+她仍然必須繼續守住秘密。
+
+只要能夠拯救楓丹，
+再痛苦也無所謂。`,
+            reasonTitle: "五百年倒數｜內心真實溫度",
+            reason:
+"五百年的孤獨與恐懼，最終都化成了同一個願望：希望楓丹的人民能夠活下去。"
+        }
+    ]
+};
+
+// ==============================
+// 網站互動功能
+// ==============================
+
+let currentType = "";
+let currentIndex = 0;
+
+function choose(type) {
+
+    // 設定目前選擇的視角
+    currentType = type;
+    currentIndex = 0;
+
+    // 切換按鈕狀態
+    document.querySelectorAll(".choice").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    event.currentTarget.classList.add("active");
+
+    // 切換內心模式背景
+    document.body.classList.toggle(
+        "inner-mode",
+        type === "inner"
+    );
+
+    // 顯示事件
+    showEvent();
+}
+
+function nextEvent() {
+
+    if (!currentType) return;
+
+    const list = events[currentType];
+
+    // 隨機挑選下一個不同事件
+    if (list.length > 1) {
+        let newIndex;
+
+        do {
+            newIndex = Math.floor(Math.random() * list.length);
+        } while (newIndex === currentIndex);
+
+        currentIndex = newIndex;
+    }
+
+    showEvent();
+}
+
+function showEvent() {
+
+    const list = events[currentType];
+    const data = list[currentIndex];
+
+    // 更新事件內容
+    document.getElementById("eventTitle").textContent =
+        data.title;
+
+    document.getElementById("eventContent").textContent =
+        data.content;
+
+    document.getElementById("reasonTitle").textContent =
+        data.reasonTitle;
+
+    document.getElementById("reasonContent").textContent =
+        data.reason;
+
+    // 更新事件編號
+    document.querySelector(".record").textContent =
+        "COURT RECORD · EVENT " +
+        String(currentIndex + 1).padStart(2, "0");
+
+    // 顯示換事件按鈕
+    document.getElementById("nextBtn").style.display =
+        "block";
+
+    // 更新進度
+    const names = {
+        accuse: "指控與質疑",
+        defend: "偽裝與辯解",
+        inner: "窺探內心"
+    };
+
+    document.getElementById("progress").textContent =
+        "CURRENT VIEW : " + names[currentType] +
+        " ｜ EVENT : " + (currentIndex + 1) +
+        " / " + list.length;
+
+    // 重新播放出現動畫
+    const result = document.getElementById("result");
+
+    result.style.animation = "none";
+    void result.offsetWidth;
+    result.style.animation = "appear 0.4s ease";
+}
+
+</script>
+
+</body>
+</html>
